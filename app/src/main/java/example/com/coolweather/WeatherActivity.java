@@ -1,5 +1,6 @@
 package example.com.coolweather;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
@@ -24,6 +25,7 @@ import java.io.IOException;
 
 import example.com.coolweather.gson.Forecast;
 import example.com.coolweather.gson.Weather;
+import example.com.coolweather.service.AutoUpdateService;
 import example.com.coolweather.util.HttpUtil;
 import example.com.coolweather.util.Utility;
 import okhttp3.Call;
@@ -230,5 +232,7 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 }
